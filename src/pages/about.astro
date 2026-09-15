@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, socials, experience, process } from '../data/site';
+---
+
+<Layout
+  title="Chi sono | Giacomo Tornello"
+  description="Freelance digitale in Sicilia: marketing, project management, Scrum Master, QA e sviluppo web. 7+ anni di esperienza con aziende, scuole e startup."
+>
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-photo-placeholder">
+      <span>Foto<br />professionale<br />in arrivo</span>
+    </div>
+    <p class="about-hello">Ciao!</p>
+    <h1 class="about-title">
+      Sono <strong>Giacomo Tornello</strong>
+    </h1>
+    <p class="about-sub">
+      Appassionato nel creare esperienze digitali moderne attraverso strategia,
+      creatività e project management — per trasformare idee in risultati concreti.
+    </p>
+    <p class="about-location">{site.location}</p>
+    <ul class="about-socials">
+      {socials.map((s) => (
+        <li>
+          <a href={s.url} target="_blank" rel="noopener">{s.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <h2 class="section-title">La mia storia</h2>
+    <p>{site.bio}</p>
+    <p>
+      Nel corso degli anni ho sviluppato un approccio moderno e strategico, focalizzato
+      su estetica pulita, organizzazione Agile e risultati misurabili. Ho lavorato su
+      marketing, siti web e prodotti digitali per aziende, scuole e startup, con
+      l'obiettivo costante di creare esperienze allineate all'identità di ogni realtà.
+    </p>
+    <a class="btn btn-accent" href="/contact">Parliamone</a>
+  </section>
+
+  <!-- WORK PROCESS -->
+  <section class="process">
+    <h2 class="section-title">Il mio metodo<br />di lavoro</h2>
+    <div class="process-list">
+      {process.map((p) => (
+        <div class="process-item">
+          <span class="process-step">({p.step})</span>
+          <h3 class="process-title">{p.title}</h3>
+          <p class="process-desc">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <h2 class="section-title">Esperienza</h2>
+    <div class="experience-list">
+      {experience.map((e, i) => (
+        <div class="experience-item">
+          <span class="exp-index">{i + 1}.</span>
+          <div class="exp-body">
+            <span class="exp-period">{e.period}</span>
+            <h3 class="exp-role">{e.role}</h3>
+            <span class="exp-company">{e.company}</span>
+            <p class="exp-desc">{e.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title">
+      Lavoriamo<br />insieme?
+    </h2>
+    <a class="btn btn-accent" href="/contact">Get in touch</a>
+  </section>
+</Layout>
+
+<style>
+  .about-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .about-photo-placeholder {
+    aspect-ratio: 16 / 7;
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    background: linear-gradient(135deg, #efe9df, #e3dccd);
+    border-radius: var(--radius);
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .about-hello {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+
+  .about-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .about-sub {
+    max-width: 600px;
+    margin: 1.25rem auto 0;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  .about-location {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .about-socials {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+
+  .about-socials a {
+    color: var(--muted);
+  }
+
+  .about-socials a:hover {
+    color: var(--fg);
+  }
+
+  .story,
+  .process,
+  .experience,
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .story p {
+    max-width: 700px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    color: #17150f;
+  }
+
+  .process-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .process-item {
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .process-step {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .process-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin: 0.75rem 0 0.5rem;
+  }
+
+  .process-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: var(--border);
+  }
+
+  .exp-index {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .exp-period {
+    display: block;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin: 0.25rem 0;
+  }
+
+  .exp-company {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .exp-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+</style>

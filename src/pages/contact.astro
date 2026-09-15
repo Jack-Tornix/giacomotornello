@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, socials } from '../data/site';
+---
+
+<Layout
+  title="Contatti | Giacomo Tornello"
+  description="Contatta Giacomo Tornello, freelance digitale in Sicilia: marketing, project management, Scrum Master, QA e sviluppo web."
+>
+  <section class="contact-hero">
+    <div class="contact-visual">
+      <div class="contact-shape">Let's<br />Talk!</div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-intro">
+      <span class="contact-star">✱</span>
+      <h1 class="contact-title">Raccontami il tuo progetto</h1>
+      <p class="contact-sub">Di solito rispondo entro 24 ore.</p>
+    </div>
+
+    <div class="contact-main">
+      <div class="contact-email">
+        <a class="contact-email-link" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+
+      <div class="contact-location">
+        <span class="contact-label">Località</span>
+        <span>{site.location}</span>
+      </div>
+
+      <div class="contact-socials">
+        <span class="contact-label">Social</span>
+        <ul>
+          {socials.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener">{s.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .contact-visual {
+    text-align: center;
+  }
+
+  .contact-shape {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--accent);
+    text-align: center;
+  }
+
+  .contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .contact-intro {
+    margin-bottom: 3rem;
+  }
+
+  .contact-star {
+    color: var(--accent);
+    font-size: 1.6rem;
+  }
+
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-top: 0.25rem;
+  }
+
+  .contact-sub {
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .contact-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-email-link {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  .contact-location,
+  .contact-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-label {
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-socials ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .contact-socials a {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .contact-socials a:hover {
+    color: var(--fg);
+  }
+</style>
