@@ -64,7 +64,11 @@ const services = [
     </div>
     <div class="site-header__visual" aria-hidden="true">
       <div class="site-header__stage">
-        <div class="site-header__portrait">Foto<br />in arrivo</div>
+        <img class="site-header__browser" src="/images/header/browser.png" alt="" width="1039" height="1079" decoding="async" />
+        <img class="site-header__portrait" src="/images/header/portrait.png" alt="" width="680" height="711" decoding="async" />
+        <img class="site-header__ui" src="/images/header/ui-tag.png" alt="" width="283" height="197" decoding="async" />
+        <img class="site-header__ux" src="/images/header/ux-tag.png" alt="" width="293" height="213" decoding="async" />
+        <img class="site-header__star" src="/images/header/star.png" alt="" width="200" height="200" decoding="async" />
       </div>
     </div>
   </div>
@@ -327,25 +331,64 @@ const services = [
   .site-header__stage {
     --site-header-stage-size: min(100%, 28.5rem);
     width: var(--site-header-stage-size);
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1039 / 1079;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+  .site-header__browser {
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    width: 112%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .site-header__portrait,
+  .site-header__ui,
+  .site-header__ux,
+  .site-header__star {
+    user-select: none;
+    pointer-events: none;
+    height: auto;
+    display: block;
+    position: absolute;
   }
   .site-header__portrait {
+    z-index: 3;
     width: 72%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 1.5px solid #fff;
-    background: radial-gradient(circle at 30% 30%, #1c2a2a, #0c1212);
-    color: var(--color-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.4;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, calc(38px - 50%));
+  }
+  .site-header__ui {
+    z-index: 4;
+    width: 28%;
+    top: 16%;
+    right: calc(-7% - 10px);
+  }
+  .site-header__ux {
+    z-index: 4;
+    width: 30%;
+    bottom: calc(18% - 30px);
+    left: calc(-9% - 10px);
+  }
+  .site-header__star {
+    z-index: 5;
+    transform-origin: 50%;
+    width: calc(18% + 66px);
+    animation: 12s linear infinite site-header-star-spin;
+    bottom: calc(1% - 46px);
+    right: calc(-1% - 46px);
+  }
+  @keyframes site-header-star-spin {
+    0% { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-header__star { animation: none; }
   }
 
   /* ===== ABOUT ===== */
