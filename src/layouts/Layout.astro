@@ -37,218 +37,174 @@ const fullTitle = title.includes('Giacomo Tornello')
     <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Font: Albert Sans (reference Michael Theme) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header class="site-header">
-      <a href="/" class="logo">{site.name}</a>
-      <nav class="main-nav" aria-label="Navigazione principale">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/works">Works</a>
-        <a href="/contact">Contact</a>
-      </nav>
-      <a class="cta-nav" href="/contact">Get in touch</a>
-    </header>
+    <div class="page-bg" aria-hidden="true"></div>
+    <main>
+      <header class="site-header">
+        <nav class="site-header__bar container" aria-label="Navigazione principale">
+          <a class="site-header__logo" href="/" aria-label="Giacomo Tornello home">
+            <span class="site-header__logo-track">
+              <span class="site-header__logo-text">{site.name}©</span>
+              <span class="site-header__logo-text site-header__logo-text--accent" aria-hidden="true">{site.name}©</span>
+            </span>
+          </a>
+          <a class="site-header__cta" href="/contact">Get in touch</a>
+        </nav>
 
-    <slot />
+        <slot />
+      </header>
 
-    <footer class="site-footer">
-      <div class="footer-top">
-        <a href="/" class="logo">{site.name}</a>
-        <p class="footer-tagline">{site.tagline}</p>
-        <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
-      </div>
+      <footer class="site-footer">
+        <div class="site-footer__card">
+          <div class="site-footer__main">
+            <div class="site-footer__info">
+              <a class="site-footer__brand site-footer__slide-link" href="/" aria-label="Giacomo Tornello home">
+                <span class="site-footer__link-clip">
+                  <span class="site-footer__link-track">
+                    <span class="site-footer__link-text">{site.name}©</span>
+                    <span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">{site.name}©</span>
+                  </span>
+                </span>
+              </a>
+              <p class="site-footer__description">
+                <span>{site.tagline}</span>
+                <span class="site-footer__description-symbol" aria-hidden="true">㋡</span>
+              </p>
+              <a class="site-footer__email site-footer__slide-link" href={`mailto:${site.email}`}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+                <span class="site-footer__link-clip">
+                  <span class="site-footer__link-track">
+                    <span class="site-footer__link-text">{site.email}</span>
+                    <span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">{site.email}</span>
+                  </span>
+                </span>
+              </a>
+              <ul class="site-footer__socials" aria-label="Social media">
+                {socials.map((s) => (
+                  <li>
+                    <a href={s.url} target="_blank" rel="noreferrer" aria-label={s.label}>
+                      <span class="site-footer__social-clip">
+                        <span class="site-footer__social-track">
+                          <span class="site-footer__social-icon">{s.label}</span>
+                          <span class="site-footer__social-icon site-footer__social-icon--accent" aria-hidden="true">{s.label}</span>
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-      <div class="footer-socials" aria-label="Social">
-        {socials.map((s) => <a href={s.url} target="_blank" rel="noopener">{s.label}</a>)}
-      </div>
+            <nav class="site-footer__pages" aria-label="Pagine">
+              <h2>Pagine</h2>
+              <ul>
+                <li><a class="site-footer__slide-link" href="/"><span class="site-footer__link-clip"><span class="site-footer__link-track"><span class="site-footer__link-text">Home</span><span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">Home</span></span></span></a></li>
+                <li><a class="site-footer__slide-link" href="/about"><span class="site-footer__link-clip"><span class="site-footer__link-track"><span class="site-footer__link-text">Chi sono</span><span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">Chi sono</span></span></span></a></li>
+                <li><a class="site-footer__slide-link" href="/works"><span class="site-footer__link-clip"><span class="site-footer__link-track"><span class="site-footer__link-text">Progetti</span><span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">Progetti</span></span></span></a></li>
+                <li><a class="site-footer__slide-link" href="/contact"><span class="site-footer__link-clip"><span class="site-footer__link-track"><span class="site-footer__link-text">Contatti</span><span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">Contatti</span></span></span></a></li>
+                <li><a class="site-footer__slide-link" href="/licenses"><span class="site-footer__link-clip"><span class="site-footer__link-track"><span class="site-footer__link-text">Licenze</span><span class="site-footer__link-text site-footer__link-text--accent" aria-hidden="true">Licenze</span></span></span></a></li>
+              </ul>
+            </nav>
 
-      <nav class="footer-pages" aria-label="Pagine">
-        <span class="footer-label">Pagine</span>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/works">Works</a>
-        <a href="/contact">Contact</a>
-        <a href="/licenses">Licenze</a>
-      </nav>
-
-      <a class="footer-cta" href="/contact">Let's Talk</a>
-
-      <div class="footer-bottom">
-        <span>{site.name} © — Tutti i diritti riservati</span>
-      </div>
-    </footer>
+            <a class="site-footer__cta" href="/contact">Parliamone</a>
+          </div>
+          <div class="site-footer__bottom">
+            <p>{site.name}© <span aria-hidden="true">—</span> Tutti i diritti riservati</p>
+            <p>Freelance digitale · Sicilia</p>
+          </div>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
 
-<style>
+<style is:global>
   :root {
-    --bg: #faf7f2;
-    --fg: #17150f;
-    --muted: #6b6659;
-    --accent: #ff5c35;
-    --accent-2: #c7ff3c;
-    --radius: 18px;
-    --border: 1px solid rgba(23, 21, 15, 0.1);
-    --font-body: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
-    --font-display: 'Clash Display', 'Inter', system-ui, sans-serif;
+    --color-bg: #0c1212;
+    --color-fg: #e8edec;
+    --color-muted: #a3a3a3;
+    --color-accent-purple: #7772ff;
+    --color-accent-lime: #d4f06d;
+    --color-accent-pink: #ff9e9e;
+    --color-accent-yellow: #eaba2b;
+    --font-sans: "Albert Sans", system-ui, sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --container-max: 1440px;
+    --container-pad-x: clamp(1.25rem, 4vw, 3.5rem);
   }
 
-  * {
+  *,
+  :before,
+  :after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
+  html,
+  body {
+    background-color: var(--color-bg);
+    min-height: 100%;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
   }
 
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .page-bg {
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+    background-size: 64px 64px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    inset: 0 auto auto 0;
+  }
+
+  main {
+    z-index: 1;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--container-max);
+    padding-inline: var(--container-pad-x);
+    margin-inline: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
   }
 
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  .site-header {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.5rem 1.5rem;
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-  }
-
-  .main-nav {
-    display: flex;
-    gap: 1.5rem;
-    margin-left: auto;
-  }
-
-  .main-nav a {
-    font-size: 0.95rem;
-    color: var(--muted);
-    transition: color 0.2s;
-  }
-
-  .main-nav a:hover {
-    color: var(--fg);
-  }
-
-  .cta-nav {
-    background: var(--fg);
-    color: var(--bg);
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-
-  .cta-nav:hover {
-    opacity: 0.85;
-  }
-
-  .site-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 2rem;
-    border-top: var(--border);
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr auto;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .footer-top {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .footer-tagline {
-    color: var(--muted);
-    max-width: 340px;
-  }
-
-  .footer-email {
-    text-decoration: underline;
-    font-weight: 500;
-  }
-
-  .footer-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer-socials a:hover {
-    opacity: 0.7;
-  }
-
-  .footer-pages {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer-label {
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-
-  .footer-pages a {
-    color: var(--muted);
-  }
-
-  .footer-pages a:hover {
-    color: var(--fg);
-  }
-
-  .footer-cta {
-    background: var(--accent);
-    color: #17150f;
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 600;
-  }
-
-  .footer-bottom {
-    grid-column: 1 / -1;
-    padding-top: 2rem;
-    border-top: var(--border);
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: 768px) {
-    .site-header {
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .main-nav {
-      order: 3;
-      width: 100%;
-      justify-content: space-between;
-      margin-left: 0;
-    }
-    .site-footer {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
   }
 </style>

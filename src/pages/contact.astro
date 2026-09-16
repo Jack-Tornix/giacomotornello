@@ -7,133 +7,136 @@ import { site, socials } from '../data/site';
   title="Contatti | Giacomo Tornello"
   description="Contatta Giacomo Tornello, freelance digitale in Sicilia: marketing, project management, Scrum Master, QA e sviluppo web."
 >
-  <section class="contact-hero">
-    <div class="contact-visual">
-      <div class="contact-shape">Let's<br />Talk!</div>
-    </div>
-  </section>
+  <section class="contact-hero" aria-labelledby="contact-title">
+    <div class="contact-hero__canvas">
+      <p class="contact-hero__intro">* Raccontami il tuo progetto.</p>
+      <p class="contact-hero__phone">Di solito rispondo entro 24 ore.</p>
 
-  <section class="contact">
-    <div class="contact-intro">
-      <span class="contact-star">✱</span>
-      <h1 class="contact-title">Raccontami il tuo progetto</h1>
-      <p class="contact-sub">Di solito rispondo entro 24 ore.</p>
-    </div>
-
-    <div class="contact-main">
-      <div class="contact-email">
-        <a class="contact-email-link" href={`mailto:${site.email}`}>{site.email}</a>
+      <div class="contact-hero__visual">
+        <h1 class="contact-hero__big" id="contact-title">Let's<br />Talk!</h1>
       </div>
 
-      <div class="contact-location">
-        <span class="contact-label">Località</span>
-        <span>{site.location}</span>
-      </div>
+      <ul class="contact-hero__socials" aria-label="Social media">
+        {socials.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noreferrer" aria-label={s.label}>{s.label}</a>
+          </li>
+        ))}
+      </ul>
 
-      <div class="contact-socials">
-        <span class="contact-label">Social</span>
-        <ul>
-          {socials.map((s) => (
-            <li>
-              <a href={s.url} target="_blank" rel="noopener">{s.label}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <a class="contact-hero__email" href={`mailto:${site.email}`}>{site.email}</a>
+
+      <p class="contact-hero__address">{site.location}</p>
     </div>
   </section>
 </Layout>
 
 <style>
   .contact-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 2rem;
-  }
-
-  .contact-visual {
-    text-align: center;
-  }
-
-  .contact-shape {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--accent);
-    text-align: center;
-  }
-
-  .contact {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem 5rem;
-  }
-
-  .contact-intro {
-    margin-bottom: 3rem;
-  }
-
-  .contact-star {
-    color: var(--accent);
-    font-size: 1.6rem;
-  }
-
-  .contact-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 3rem);
-    letter-spacing: -0.02em;
-    margin-top: 0.25rem;
-  }
-
-  .contact-sub {
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  .contact-main {
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem 0 4rem;
     display: flex;
+    position: relative;
+  }
+  .contact-hero__canvas {
+    flex: 1;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 44rem;
+    padding-inline: clamp(1.25rem, 4.75vw, 6.25rem);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: 2rem;
   }
-
-  .contact-email-link {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 6px;
+  .contact-hero__visual {
+    z-index: 2;
+    text-align: center;
   }
-
-  .contact-location,
-  .contact-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  .contact-hero__big {
+    color: #fff;
+    font-size: 9rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    margin: 0;
   }
-
-  .contact-label {
-    color: var(--muted);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+  .contact-hero__intro,
+  .contact-hero__phone,
+  .contact-hero__address {
+    color: var(--color-muted);
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.45;
+    text-align: center;
   }
-
-  .contact-socials ul {
+  .contact-hero__socials {
     list-style: none;
     display: flex;
     gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-hero__socials a {
+    color: #fff;
+    border: 1px solid #ffffffd9;
+    border-radius: 999px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-flex;
+  }
+  .contact-hero__socials a:hover {
+    transform: scale(1.05);
+  }
+  .contact-hero__email {
+    border: 1.5px solid var(--color-accent-lime);
+    background: var(--color-accent-lime);
+    min-width: clamp(18rem, 23vw, 28rem);
+    color: var(--color-bg);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    border-radius: 999px;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(1.45rem, 2vw, 2rem) 2.75rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 0.22s, color 0.22s, transform 0.22s;
+    display: inline-flex;
+    text-align: center;
+  }
+  .contact-hero__email:hover {
+    color: var(--color-accent-lime);
+    background: 0 0;
+    transform: rotate(-3deg);
+  }
+  .contact-hero__address {
+    color: var(--color-muted);
   }
 
-  .contact-socials a {
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .contact-socials a:hover {
-    color: var(--fg);
+  @media (max-width: 600px) {
+    .contact-hero__big {
+      font-size: 4rem;
+    }
+    .contact-hero__canvas {
+      gap: 1.5rem;
+      min-height: 0;
+      padding-top: 3rem;
+    }
+    .contact-hero__email {
+      width: 100%;
+      min-width: 0;
+    }
   }
 </style>

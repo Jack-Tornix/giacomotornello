@@ -8,260 +8,455 @@ import { site, socials, experience, process } from '../data/site';
   description="Freelance digitale in Sicilia: marketing, project management, Scrum Master, QA e sviluppo web. 7+ anni di esperienza con aziende, scuole e startup."
 >
   <!-- HERO -->
-  <section class="about-hero">
-    <div class="about-photo-placeholder">
-      <span>Foto<br />professionale<br />in arrivo</span>
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="about-hero__center">
+      <div class="about-hero__portrait-wrap">
+        <div class="about-hero__portrait-frame">Foto</div>
+      </div>
+      <h1 class="about-hero__title" id="about-title">
+        <span>Sono <strong>Giacomo</strong>,</span>
+        <span>freelance digitale</span>
+      </h1>
+      <p class="about-hero__description">
+        Appassionato nel creare esperienze digitali moderne attraverso strategia,
+        creatività e project management — per trasformare idee in risultati concreti.
+      </p>
     </div>
-    <p class="about-hello">Ciao!</p>
-    <h1 class="about-title">
-      Sono <strong>Giacomo Tornello</strong>
-    </h1>
-    <p class="about-sub">
-      Appassionato nel creare esperienze digitali moderne attraverso strategia,
-      creatività e project management — per trasformare idee in risultati concreti.
-    </p>
-    <p class="about-location">{site.location}</p>
-    <ul class="about-socials">
-      {socials.map((s) => (
-        <li>
-          <a href={s.url} target="_blank" rel="noopener">{s.label}</a>
-        </li>
-      ))}
-    </ul>
   </section>
 
   <!-- STORY -->
-  <section class="story">
-    <h2 class="section-title">La mia storia</h2>
-    <p>{site.bio}</p>
-    <p>
-      Nel corso degli anni ho sviluppato un approccio moderno e strategico, focalizzato
-      su estetica pulita, organizzazione Agile e risultati misurabili. Ho lavorato su
-      marketing, siti web e prodotti digitali per aziende, scuole e startup, con
-      l'obiettivo costante di creare esperienze allineate all'identità di ogni realtà.
-    </p>
-    <a class="btn btn-accent" href="/contact">Parliamone</a>
+  <section class="about-story">
+    <div class="about-story__layout">
+      <h2 class="about-story__title">La mia <span>storia</span></h2>
+      <div class="about-story__content">
+        <p>{site.bio}</p>
+        <p>
+          Nel corso degli anni ho sviluppato un approccio moderno e strategico,
+          focalizzato su estetica pulita, organizzazione Agile e risultati misurabili.
+          Ho lavorato su marketing, siti web e prodotti digitali per aziende, scuole e
+          startup, con l'obiettivo costante di creare esperienze allineate
+          all'identità di ogni realtà.
+        </p>
+        <a class="about-story__cta site-header__cta" href="/contact">Parliamone</a>
+      </div>
+    </div>
   </section>
 
   <!-- WORK PROCESS -->
-  <section class="process">
-    <h2 class="section-title">Il mio metodo<br />di lavoro</h2>
-    <div class="process-list">
-      {process.map((p) => (
-        <div class="process-item">
-          <span class="process-step">({p.step})</span>
-          <h3 class="process-title">{p.title}</h3>
-          <p class="process-desc">{p.description}</p>
-        </div>
-      ))}
+  <section class="about-process">
+    <div class="about-process__inner">
+      <h2 class="about-process__title">Il mio <span>metodo</span></h2>
+      <div class="about-process__grid">
+        {process.map((p, i) => {
+          const colors = ['#D4EF6D', '#7772FF', '#FFA59C', '#EABA2B'];
+          return (
+            <article class="about-process__card" style={`--process-color: ${colors[i % 4]}`}>
+              <div class="about-process__shape" aria-hidden="true"></div>
+              <div class="about-process__outline">
+                <p class="about-process__number">{p.step}</p>
+                <h3>{p.title}</h3>
+                <p class="about-process__description">{p.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="experience">
-    <h2 class="section-title">Esperienza</h2>
-    <div class="experience-list">
-      {experience.map((e, i) => (
-        <div class="experience-item">
-          <span class="exp-index">{i + 1}.</span>
-          <div class="exp-body">
-            <span class="exp-period">{e.period}</span>
-            <h3 class="exp-role">{e.role}</h3>
-            <span class="exp-company">{e.company}</span>
-            <p class="exp-desc">{e.description}</p>
-          </div>
-        </div>
-      ))}
+  <section class="about-experience">
+    <div class="about-experience__inner">
+      <h2 class="about-experience__title">Esperienza<span>Lavorativa</span></h2>
+      <ul class="about-experience__list">
+        {experience.map((e) => (
+          <li class="about-experience__item">
+            <p class="about-experience__period">{e.period}</p>
+            <p class="about-experience__role">{e.role}</p>
+            <p class="about-experience__company">{e.company}</p>
+            <p class="about-experience__description">{e.description}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-section">
-    <h2 class="cta-title">
-      Lavoriamo<br />insieme?
-    </h2>
-    <a class="btn btn-accent" href="/contact">Get in touch</a>
+  <section class="cta" aria-labelledby="cta-heading">
+    <div class="container cta__inner">
+      <p class="cta__eyebrow"><span>Hai un progetto in mente?</span></p>
+      <h2 class="cta__headline" id="cta-heading">
+        <span class="cta__line cta__line--top">Lavoriamo</span>
+        <span class="cta__line cta__line--bottom">insieme</span>
+      </h2>
+      <a class="cta__button" href="/contact">Get in touch</a>
+    </div>
   </section>
 </Layout>
 
 <style>
+  /* ===== HERO ===== */
   .about-hero {
+    isolation: isolate;
+    flex-direction: column;
+    min-height: 70vh;
+    padding: 2rem 0 3rem;
+    display: flex;
+    position: relative;
+  }
+  .about-hero__center {
+    text-align: center;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 1.5rem 2rem;
-    text-align: center;
+    padding: 3rem 1.5rem 0;
+    display: flex;
   }
-
-  .about-photo-placeholder {
-    aspect-ratio: 16 / 7;
-    max-width: 760px;
-    margin: 0 auto 2.5rem;
-    background: linear-gradient(135deg, #efe9df, #e3dccd);
-    border-radius: var(--radius);
-    border: var(--border);
+  .about-hero__portrait-wrap {
+    aspect-ratio: 1;
+    width: clamp(13.25rem, 19vw - 1.25rem, 17.75rem);
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .about-hero__portrait-frame {
+    background: radial-gradient(circle at 30% 30%, #2a3580, var(--color-accent-purple));
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--muted);
-    line-height: 1.4;
-    text-align: center;
-  }
-
-  .about-hello {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 1.4rem;
-  }
-
-  .about-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-
-  .about-sub {
-    max-width: 600px;
-    margin: 1.25rem auto 0;
-    color: var(--muted);
-    font-size: 1.1rem;
-  }
-
-  .about-location {
-    margin-top: 1rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .about-socials {
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-    justify-content: center;
-    margin-top: 1.25rem;
-  }
-
-  .about-socials a {
-    color: var(--muted);
-  }
-
-  .about-socials a:hover {
-    color: var(--fg);
-  }
-
-  .story,
-  .process,
-  .experience,
-  .cta-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 3rem);
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  .story p {
-    max-width: 700px;
-    color: var(--muted);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    border-radius: 999px;
-    font-weight: 600;
-    margin-top: 1rem;
-  }
-
-  .btn-accent {
-    background: var(--accent);
-    color: #17150f;
-  }
-
-  .process-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .process-item {
-    border: var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-  }
-
-  .process-step {
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  .process-title {
-    font-family: var(--font-display);
+    color: #fff;
+    font-weight: var(--font-weight-semibold);
     font-size: 1.3rem;
-    margin: 0.75rem 0 0.5rem;
   }
-
-  .process-desc {
-    color: var(--muted);
-    font-size: 0.9rem;
+  .about-hero__title {
+    color: #fff;
+    font-size: 4.77rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.045em;
+    margin: 0;
+    line-height: 1.02;
   }
-
-  .experience-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .experience-item {
-    display: flex;
-    gap: 1.25rem;
-    padding: 1.5rem 0;
-    border-bottom: var(--border);
-  }
-
-  .exp-index {
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  .exp-period {
+  .about-hero__title > span {
+    white-space: nowrap;
     display: block;
-    color: var(--muted);
-    font-size: 0.9rem;
-    font-weight: 600;
+  }
+  .about-hero__title strong {
+    color: var(--color-accent-purple);
+    font: inherit;
+  }
+  .about-hero__description {
+    max-width: 24rem;
+    color: var(--color-muted);
+    margin: 1.75rem auto 0;
+    font-size: 1.26rem;
+    line-height: 1.45;
   }
 
-  .exp-role {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    margin: 0.25rem 0;
+  /* ===== STORY ===== */
+  .about-story {
+    padding: clamp(5rem, 12vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
+    position: relative;
+  }
+  .about-story__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(30rem, 39rem);
+    align-items: start;
+    gap: clamp(4rem, 8vw, 9rem);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: clamp(1.25rem, 4.75vw, 6.25rem);
+    display: grid;
+  }
+  .about-story__title {
+    color: #fff;
+    font-size: 4.86rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.055em;
+    white-space: nowrap;
+    margin: 0;
+    line-height: 1;
+  }
+  .about-story__title span {
+    color: var(--color-accent-purple);
+  }
+  .about-story__content {
+    color: var(--color-muted);
+    padding-top: 1.625rem;
+    font-size: 1.17rem;
+    line-height: 1.68;
+  }
+  .about-story__content p {
+    margin: 0;
+  }
+  .about-story__content p + p {
+    margin-top: clamp(3rem, 6vh, 4.5rem);
+  }
+  .about-story__cta {
+    min-width: 13.75rem;
+    margin-top: clamp(3rem, 6vh, 4rem);
+    padding: 1.65rem 3rem;
   }
 
-  .exp-company {
-    color: var(--accent);
-    font-weight: 600;
+  /* ===== PROCESS ===== */
+  .about-process {
+    padding: clamp(4rem, 4vw, 5.3rem) 0 clamp(7rem, 11vw, 10rem);
+    position: relative;
+  }
+  .about-process__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: clamp(1.25rem, 4.4vw, 6.25rem);
+  }
+  .about-process__title {
+    color: #fff;
+    font-size: 5.31rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.055em;
+    flex-wrap: wrap;
+    gap: 0.2em;
+    margin: 0;
+    line-height: 0.98;
+    display: flex;
+  }
+  .about-process__title span {
+    color: var(--color-accent-purple);
+  }
+  .about-process__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.25rem, 1.6vw, 2rem);
+    margin-top: clamp(5rem, 6vw, 6rem);
+    display: grid;
+  }
+  .about-process__card {
+    align-self: start;
+    width: 100%;
+    position: relative;
+  }
+  .about-process__card:nth-child(2n) {
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+  }
+  .about-process__shape {
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: -0.75rem;
+    left: 0.75rem;
+    border-radius: 1.25rem;
+    background: var(--process-color);
+    position: absolute;
+  }
+  .about-process__outline {
+    z-index: 1;
+    border-radius: 1.75rem;
+    width: 100%;
+    min-height: 18rem;
+    color: var(--color-bg);
+    border: 1.5px solid #fff;
+    flex-direction: column;
+    padding: 2rem 1.75rem;
+    display: flex;
+    position: relative;
+  }
+  .about-process__number {
+    font-size: 2.6rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.045em;
+    margin: 0;
+    line-height: 1;
+  }
+  .about-process__outline h3 {
+    font-size: 2rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.04em;
+    margin: 0;
+    padding-top: 1.25rem;
+    line-height: 1;
+  }
+  .about-process__description {
+    font-size: 1.02rem;
+    font-weight: var(--font-weight-regular);
+    margin: auto 0 0;
+    line-height: 1.3;
   }
 
-  .exp-desc {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
+  /* ===== EXPERIENCE ===== */
+  .about-experience {
+    padding: clamp(2rem, 2.5vw, 2.5rem) 0 clamp(4rem, 6vw, 6rem);
+  }
+  .about-experience__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: clamp(1.25rem, 4.75vw, 6.25rem);
+  }
+  .about-experience__title {
+    color: #fff;
+    font-size: 4.95rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.06em;
+    gap: 0.18em;
+    margin: 0;
+    line-height: 0.98;
+    display: flex;
+  }
+  .about-experience__title span {
+    color: var(--color-accent-purple);
+  }
+  .about-experience__list {
+    margin: clamp(4rem, 6vw, 5.5rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .about-experience__item {
+    border-bottom: 1px dashed #ffffff3d;
+    grid-template-columns: 23% 22.5% 19.5% minmax(0, 1fr);
+    align-items: start;
+    padding-bottom: 2.5rem;
+    display: grid;
+    gap: 0.5rem 1.5rem;
+  }
+  .about-experience__item:not(:last-child) {
+    margin-bottom: clamp(3rem, 4vw, 4rem);
+  }
+  .about-experience__item p {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-regular);
+    margin: 0;
+    line-height: 1.45;
+  }
+  .about-experience__period,
+  .about-experience__role,
+  .about-experience__company {
+    color: #fffffff0;
+  }
+  .about-experience__description {
+    max-width: 42rem;
+    color: var(--color-muted);
   }
 
-  .cta-section {
+  /* ===== CTA (shared con Home) ===== */
+  .cta {
+    isolation: isolate;
+    align-items: center;
+    min-height: 60vh;
+    padding: clamp(6rem, 9vw, 9rem) 0;
+    display: flex;
+    position: relative;
+  }
+  .cta__inner {
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+  .cta__eyebrow {
+    color: var(--color-muted);
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    display: inline-flex;
+  }
+  .cta__headline {
+    isolation: isolate;
+    color: #fff;
+    width: min(100%, 70rem);
+    font-size: 7rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.065em;
+    margin: clamp(3rem, 5vw, 5rem) 0 0;
+    line-height: 0.86;
+    position: relative;
+  }
+  .cta__line {
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+  .cta__line--bottom {
+    margin-top: 0.28em;
+    color: var(--color-accent-purple);
+  }
+  .cta__button {
+    z-index: 5;
+    border: 1.5px solid var(--color-accent-lime);
+    background: var(--color-accent-lime);
+    color: var(--color-bg);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(3.5rem, 5vw, 5rem);
+    padding: 1.35rem 3.2rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 0.22s, color 0.22s, transform 0.22s;
+    display: inline-flex;
+    position: relative;
+  }
+  .cta__button:hover {
+    color: var(--color-accent-lime);
+    background: 0 0;
+    transform: rotate(-4deg);
   }
 
-  .cta-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+  @media (max-width: 960px) {
+    .about-story__layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .about-story__title {
+      font-size: 4.2rem;
+    }
+    .about-process__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .about-process__card:nth-child(2n) {
+      margin-top: 0;
+    }
+    .about-experience__item {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .about-experience__description {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-hero__title {
+      font-size: 2.5rem;
+    }
+    .about-story__title {
+      font-size: 3.4rem;
+    }
+    .about-process__title {
+      font-size: 3.4rem;
+      flex-direction: column;
+    }
+    .about-process__grid {
+      grid-template-columns: 1fr;
+    }
+    .about-experience__title {
+      font-size: 3.4rem;
+      flex-direction: column;
+    }
+    .about-experience__item {
+      grid-template-columns: 1fr;
+    }
+    .cta__headline {
+      font-size: 3.5rem;
+    }
   }
 </style>
